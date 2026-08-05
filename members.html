@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Member Resources — Val Voices</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink:#173f4d; --paper:#f7f3ea; --cream:#e9dfcf; --red:#b3423d; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--paper); color:var(--ink); font:15px/1.7 Poppins,Arial,sans-serif; }
+    header { min-height:92px; padding:15px 6vw; display:flex; align-items:center; justify-content:space-between; background:#fff; }
+    .brand { display:flex; align-items:center; gap:14px; color:inherit; text-decoration:none; }
+    .mark { width:58px; height:58px; border:2px solid var(--red); border-radius:50%; display:grid; place-items:center; color:var(--red); font:30px "DM Serif Display",serif; letter-spacing:-3px; }
+    .name { font:25px "DM Serif Display",serif; }
+    .back { color:var(--ink); font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:.1em; }
+    main { max-width:1180px; margin:auto; padding:90px 6vw 110px; }
+    .eyebrow { margin:0 0 12px; color:var(--red); font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:.18em; }
+    h1 { margin:0 0 18px; font:400 clamp(48px,7vw,80px)/1.05 "DM Serif Display",serif; }
+    .intro { max-width:650px; margin:0 0 48px; color:#5b6965; }
+    .grid { display:grid; grid-template-columns:1fr 1fr; gap:32px; }
+    .card { padding:36px; background:#fff; border:1px solid #d7d1c7; }
+    h2 { margin:0 0 22px; font:400 32px/1.2 "DM Serif Display",serif; }
+    ul { list-style:none; margin:0; padding:0; }
+    li { padding:16px 0; border-top:1px solid #ded9d1; }
+    li strong { display:block; }
+    li a { color:var(--red); font-weight:500; }
+    .note { margin-top:34px; padding:22px; background:var(--cream); }
+    .logout { margin-top:35px; border:0; background:none; padding:0; color:#5b6965; text-decoration:underline; cursor:pointer; font:inherit; }
+    @media (max-width:700px) { .name { display:none; } main { padding:60px 22px 80px; } .grid { grid-template-columns:1fr; } .card { padding:26px 20px; } }
+  </style>
+</head>
+<body>
+  <header><a class="brand" href="index.html"><span class="mark">VV</span><span class="name">Val Voices</span></a><a class="back" href="index.html">Back to site</a></header>
+  <main>
+    <p class="eyebrow">Members only</p>
+    <h1>Member resources</h1>
+    <p class="intro">Sheet music, practice materials, and rehearsal details for current Val Voices members.</p>
+    <div class="grid">
+      <section class="card"><h2>Sheet music</h2><ul><li><a href="#">Concert sheet-music folder</a><br>PDF collection</li><li><a href="#">Practice recordings</a></li><li><a href="#">Performance notes</a></li></ul></section>
+      <section class="card"><h2>Fall rehearsal schedule</h2><ul><li><strong>Weekly on Sundays</strong>10:30 AM–12:00 PM</li><li><strong>Rehearsal location</strong>60 Onondaga Avenue<br>San Francisco, California<br>10-minute walk from Balboa Park BART</li></ul></section>
+    </div>
+    <p class="note">These are placeholder resource links. Replace them with your sheet-music PDFs, shared folder, and final rehearsal information.</p>
+    <button class="logout" id="logout">Log out and lock this page</button>
+  </main>
+  <script>
+    if (sessionStorage.getItem('valVoicesMember') !== 'yes') window.location.replace('index.html#members');
+    document.querySelector('#logout').addEventListener('click', () => { sessionStorage.removeItem('valVoicesMember'); window.location.replace('index.html#members'); });
+  </script>
+</body>
+</html>

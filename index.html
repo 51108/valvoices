@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Val Voices is a welcoming vocal ensemble bringing music and community together in San Francisco.">
+  <title>Val Voices</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink:#173f4d; --paper:#f7f3ea; --cream:#e9dfcf; --red:#b3423d; --white:#fff; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--ink); background:var(--paper); font:15px/1.7 Poppins,Arial,sans-serif; }
+    a { color:inherit; }
+    .site-header { height:112px; display:flex; align-items:center; padding:0 5.5vw; background:#fff; position:relative; z-index:10; }
+    .brand { display:flex; align-items:center; gap:15px; text-decoration:none; min-width:245px; }
+    .brand-mark { width:65px; height:65px; border:2px solid var(--red); border-radius:50%; display:grid; place-items:center; color:var(--red); font:31px "DM Serif Display",serif; letter-spacing:-3px; }
+    .brand-copy { line-height:1.1; text-transform:uppercase; letter-spacing:.12em; font-size:13px; font-weight:600; }
+    .brand-copy strong { display:block; font:22px "DM Serif Display",serif; letter-spacing:.04em; text-transform:none; }
+    nav { margin-left:auto; display:flex; align-items:center; gap:2.2vw; }
+    nav a { text-decoration:none; font-size:13px; font-weight:500; letter-spacing:.04em; }
+    .nav-dropdown { position:relative; }
+    .nav-dropdown summary { list-style:none; cursor:pointer; font-size:13px; font-weight:500; letter-spacing:.04em; }
+    .nav-dropdown summary::-webkit-details-marker { display:none; }
+    .nav-dropdown summary::after { content:"⌄"; display:inline-block; margin-left:6px; font-size:12px; transition:transform .2s; }
+    .nav-dropdown[open] summary::after { transform:rotate(180deg); }
+    .dropdown-menu { position:absolute; top:calc(100% + 14px); left:-18px; width:190px; padding:12px 0; background:#fff; box-shadow:0 12px 30px rgba(23,63,77,.16); }
+    .dropdown-menu a { display:block; padding:9px 18px; white-space:nowrap; }
+    .dropdown-menu a:hover { color:var(--red); }
+    @media (min-width:901px) { .nav-dropdown:hover .dropdown-menu { display:block; } }
+    nav .support { color:#fff; background:var(--red); padding:12px 19px; }
+    .menu-btn { display:none; margin-left:auto; border:0; background:none; width:42px; height:42px; padding:8px; }
+    .menu-btn span { display:block; height:1px; background:var(--ink); margin:7px 0; }
+    .hero { min-height:620px; position:relative; display:flex; align-items:center; padding:6vw 58vw 6vw 6vw; overflow:hidden; background:var(--cream); }
+    .hero::before { content:""; position:absolute; inset:0 0 0 48%; background:url('images/8423897D-5A48-4B32-83A8-FCD8CB1F73DE.jpeg') center 61%/cover no-repeat; filter:saturate(.78); }
+    .hero-content { position:relative; z-index:1; width:36vw; max-width:560px; color:var(--ink); }
+    .eyebrow { margin:0 0 15px; color:var(--red); text-transform:uppercase; letter-spacing:.18em; font-size:11px; font-weight:600; }
+    .hero .eyebrow { color:var(--red); }
+    h1 { margin:0 0 24px; font:400 clamp(63px,9vw,125px)/.88 "DM Serif Display",serif; letter-spacing:-.025em; }
+    .hero p:not(.eyebrow) { max-width:600px; margin:0 0 30px; font-size:18px; }
+    .button { display:inline-block; padding:14px 23px; background:var(--red); color:#fff; text-decoration:none; text-transform:uppercase; letter-spacing:.12em; font-size:11px; font-weight:600; }
+    button.button { font-family:Poppins,Arial,sans-serif; }
+    .intro { padding:115px 6vw; display:grid; grid-template-columns:1fr 1fr; gap:8vw; max-width:1400px; margin:auto; align-items:start; }
+    h2 { margin:0; font:400 clamp(43px,6vw,74px)/1.05 "DM Serif Display",serif; }
+    .intro-copy { color:#5b6965; font-size:17px; }
+    .intro-copy p:first-child { margin-top:0; }
+    .story { padding:105px 6vw; background:#fff; }
+    .story-inner { max-width:1240px; margin:auto; }
+    .offer-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:45px; counter-reset:offer; }
+    .offer-card { padding:32px; background:var(--cream); counter-increment:offer; }
+    .offer-card::before { content:"0" counter(offer); display:block; margin-bottom:24px; color:var(--red); font:24px "DM Serif Display",serif; }
+    .offer-card p { margin:0; color:#5b6965; }
+    .history { padding:110px 6vw; }
+    .history-inner { max-width:1240px; margin:auto; display:grid; grid-template-columns:minmax(250px,.72fr) 1.28fr; gap:8vw; }
+    .history-copy { color:#5b6965; font-size:16px; }
+    .history-copy p:first-child { margin-top:0; }
+    .next-stage { padding:100px 6vw; background:var(--red); color:#fff; text-align:center; }
+    .next-stage .eyebrow { color:#fff; }
+    .next-stage p:not(.eyebrow) { max-width:780px; margin:20px auto 0; font-size:18px; }
+    .upcoming { background:var(--cream); padding:100px 6vw; }
+    .section-inner { max-width:1240px; margin:auto; }
+    .section-head { display:flex; justify-content:space-between; align-items:end; gap:30px; margin-bottom:42px; }
+    .event-grid { display:grid; grid-template-columns:1fr 1fr; gap:28px; }
+    .event-card { background:#fff; padding:35px; border-top:4px solid var(--red); }
+    .event-card time { color:var(--red); font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:.12em; }
+    .event-card h3 { margin:12px 0; font:400 31px/1.15 "DM Serif Display",serif; }
+    .event-card p { color:#5b6965; margin:0; }
+    .text-link { display:inline-block; margin-top:22px; color:var(--red); text-transform:uppercase; letter-spacing:.1em; font-size:11px; font-weight:600; }
+    .join { padding:115px 6vw; text-align:center; background:#fff; }
+    .join p { max-width:620px; margin:18px auto 30px; color:#5b6965; }
+    .contact-dialog { width:min(520px,calc(100% - 36px)); padding:0; border:0; background:#fff; color:var(--ink); box-shadow:0 25px 80px rgba(0,0,0,.3); }
+    .contact-dialog::backdrop { background:rgba(10,38,49,.72); }
+    .dialog-inner { position:relative; padding:52px 42px 44px; text-align:center; }
+    .dialog-inner h2 { font-size:46px; margin-bottom:14px; }
+    .dialog-inner p { color:#5b6965; }
+    .dialog-email { display:inline-block; margin-top:10px; color:var(--red); font-weight:600; font-size:17px; }
+    .dialog-close { position:absolute; right:15px; top:12px; width:40px; height:40px; border:0; background:none; color:var(--ink); cursor:pointer; font-size:29px; line-height:1; }
+    footer { padding:65px 6vw 35px; background:var(--ink); color:#fff; }
+    .footer-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start; }
+    footer h3 { margin:0 0 10px; font:400 30px "DM Serif Display",serif; }
+    footer p { color:rgba(255,255,255,.75); }
+    .footer-bottom { margin-top:55px; padding-top:25px; border-top:1px solid rgba(255,255,255,.25); font-size:11px; color:rgba(255,255,255,.7); }
+    .footer-bottom { display:flex; align-items:center; position:relative; min-height:30px; }
+    .back-to-top { position:absolute; left:50%; transform:translateX(-50%); color:#fff; text-decoration:none; text-transform:uppercase; letter-spacing:.12em; font-size:10px; font-weight:600; white-space:nowrap; }
+    .back-to-top span { display:inline-block; margin-left:7px; font-size:16px; transition:transform .2s ease; }
+    .back-to-top:hover span { transform:translateY(-3px); }
+    @media (max-width:900px) {
+      .site-header { height:88px; padding:0 22px; }
+      .brand { min-width:0; }.brand-mark { width:54px;height:54px;font-size:26px; }.brand-copy { display:none; }
+      nav { display:none; position:absolute; top:88px; left:0; right:0; padding:25px; background:#fff; flex-direction:column; align-items:flex-start; box-shadow:0 12px 24px rgba(0,0,0,.08); }
+      .dropdown-menu { position:static; width:auto; padding:8px 0 0 12px; box-shadow:none; }
+      nav.open { display:flex; }.menu-btn { display:block; }
+      .hero { min-height:700px; align-items:flex-end; padding:390px 40px 65px; }
+      .hero::before { inset:0 0 auto; height:340px; background-position:center 61%; }
+      .hero-content { width:100%; max-width:650px; }
+      .intro,.history-inner,.footer-grid { grid-template-columns:1fr; }.event-grid,.offer-grid { grid-template-columns:1fr; }
+    }
+    @media (max-width:600px) { .hero { padding:330px 22px 55px; min-height:650px; }.hero::before { height:285px; }.intro,.upcoming,.join { padding:75px 22px; }.section-head { align-items:start; flex-direction:column; } }
+  </style>
+</head>
+<body id="top">
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Val Voices home"><span class="brand-mark">VV</span><span class="brand-copy"><strong>Val Voices</strong>Chorus</span></a>
+    <button class="menu-btn" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav aria-label="Main navigation"><details class="nav-dropdown"><summary>About</summary><div class="dropdown-menu"><a href="#about">Our Mission</a><a href="#what-we-offer">What We Offer</a><a href="#history">Our History</a></div></details><a href="events.html">Events</a><a href="#join">Join Us!</a><a href="#contact">Contact Us</a><a href="events.html#members">For Members</a></nav>
+  </header>
+  <main>
+    <section class="hero"><div class="hero-content"><p class="eyebrow">San Francisco vocal ensemble</p><h1>Voices in harmony</h1><p>Val Voices brings singers and audiences together through joyful performances, friendship, and a shared love of music.</p><a class="button" href="events.html">See upcoming events</a></div></section>
+    <section class="intro" id="about"><div><p class="eyebrow">Our mission</p><h2>Keeping Croatia’s singing tradition alive</h2></div><div class="intro-copy"><p>The mission of Val Voices, a Croatian vocal ensemble based in the San Francisco Bay Area, is to provide rewarding musical and educational experiences for members and audiences.</p><p>We perform music from the various regions of Croatia, originating in ancient through modern times and including newly composed works. Our singers come from diverse backgrounds and are dedicated to offering the highest level of amateur performance at affordable prices.</p></div></section>
+    <section class="story" id="what-we-offer"><div class="story-inner"><p class="eyebrow">What we offer</p><h2>Language, tradition, and the joy of singing</h2><div class="offer-grid"><article class="offer-card"><p>Val Voices gives singers and audience members the opportunity to experience the Croatian language and Croatia’s beloved singing tradition.</p></article><article class="offer-card"><p>Members explore, incorporate, and share the stories behind the songs, the musical scales used, and the many regional and island dialects that supply the lyrics.</p></article><article class="offer-card"><p><strong>Fun!</strong> We meld our voices, laugh at our mistakes, encourage each other, and gather the courage to perform. We are a vibrant vocal community.</p></article></div></div></section>
+    <section class="history" id="history"><div class="history-inner"><div><p class="eyebrow">Our history</p><h2>A new chapter in Bay Area Croatian music</h2></div><div class="history-copy"><p>Val Voices was formed in 2026 as a cultural program of the Croatian Cultural Center of San Francisco, a 501(c)(3) nonprofit organization.</p><p>Val Voices is open to everyone. Members do not need to be trained singers, speak Croatian, or be of Croatian heritage. The ensemble was preceded by the Dalmacijo Singers, who delighted audiences with Croatian songs in the pre-pandemic years.</p><p>After a lengthy post-pandemic search, we were lucky to find Astrid Kuljanic, a native of Croatia whose training, talent, enthusiasm, and humor make her the perfect fit to reinstate a Croatian ensemble in the Bay Area.</p><p>Our first season began in April 2026 with a quartet. After only ten rehearsals, the quartet performed nine songs from Međimurje, Slavonija, Dubrovnik, Istria, Trogir, Dalmatia, Brač and Split, Korčula, and Zagreb. Members honed their Croatian pronunciation, soaked in the beauty and fun of the music, and learned about the different regions of Croatia.</p></div></div></section>
+    <section class="upcoming"><div class="section-inner"><div class="section-head"><div><p class="eyebrow">Upcoming</p><h2>Come hear us sing</h2></div><a class="text-link" href="events.html">All events →</a></div><div class="event-grid"><article class="event-card"><time>October 13</time><h3>SMBS Dinner Meeting</h3><p>Croatian Cultural Center, San Francisco<br>Performance at 6:00 PM · Private event</p><a class="text-link" href="events.html">Event details →</a></article><article class="event-card"><time>November 22</time><h3>Val Voices Public Performance</h3><p>Croatian Cultural Center, San Francisco<br>Performance at 4:00 PM · Open to the public</p><a class="text-link" href="events.html">Event details →</a></article></div></div></section>
+    <section class="join" id="join"><p class="eyebrow">Sing with us</p><h2>Find your voice with Val Voices</h2><p>We welcome singers who love making music in a warm, collaborative community.</p><button class="button" id="contact-open" type="button" style="border:0;cursor:pointer">Get in touch</button></section>
+    <section class="next-stage"><p class="eyebrow">Our next stage</p><h2>Help our ensemble grow</h2><p>We are actively recruiting singers to grow Val Voices to twelve members for Fall 2026 and add more performances. Then, with some luck and determination, we hope to add traditional Tamburitza accompaniment in 2027.</p></section>
+  </main>
+  <dialog class="contact-dialog" id="contact-dialog"><div class="dialog-inner"><button class="dialog-close" id="contact-close" type="button" aria-label="Close contact window">×</button><p class="eyebrow">Contact Val Voices</p><h2>We’d love to hear from you</h2><p>For information about joining, performances, or supporting the ensemble, email us at:</p><a class="dialog-email" href="mailto:smbscultural@gmail.com">smbscultural@gmail.com</a></div></dialog>
+  <footer id="contact"><div class="footer-grid"><div><h3>Val Voices</h3><p>A San Francisco vocal ensemble bringing people together through song.</p></div><div id="support"><h3>Contact us</h3><p>Email <a href="mailto:smbscultural@gmail.com">smbscultural@gmail.com</a> to learn more about joining, upcoming performances, or supporting Val Voices.</p></div></div><div class="footer-bottom"><span>Val Voices · San Francisco, California</span><a class="back-to-top" href="#top">Back to top <span aria-hidden="true">↑</span></a></div></footer>
+  <script>
+    const b=document.querySelector('.menu-btn'),n=document.querySelector('nav');
+    b.addEventListener('click',()=>{const o=n.classList.toggle('open');b.setAttribute('aria-expanded',o);});
+    const contactDialog=document.querySelector('#contact-dialog');
+    document.querySelector('#contact-open').addEventListener('click',()=>contactDialog.showModal());
+    document.querySelector('#contact-close').addEventListener('click',()=>contactDialog.close());
+    contactDialog.addEventListener('click',event=>{if(event.target===contactDialog)contactDialog.close();});
+  </script>
+</body>
+</html>

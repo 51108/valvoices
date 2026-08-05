@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Concerts and performances from Val Voices.">
+  <title>Concerts — Val Voices</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root { --ink:#173f4d; --paper:#f7f3ea; --cream:#e9dfcf; --sage:#79949a; --red:#b3423d; --white:#fff; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; color:var(--ink); background:var(--paper); font-family:Poppins,Arial,sans-serif; font-size:15px; line-height:1.7; }
+    a { color:inherit; }
+    .site-header { height:112px; display:flex; align-items:center; padding:0 5.5vw; background:#fff; position:relative; z-index:10; }
+    .brand { display:flex; align-items:center; gap:15px; text-decoration:none; min-width:245px; }
+    .brand-mark { width:65px; height:65px; border:2px solid var(--red); border-radius:50%; display:grid; place-items:center; color:var(--red); font-family:"DM Serif Display",serif; font-size:31px; letter-spacing:-3px; }
+    .brand-copy { line-height:1.1; text-transform:uppercase; letter-spacing:.12em; font-size:13px; font-weight:600; }
+    .brand-copy strong { display:block; font-family:"DM Serif Display",serif; font-size:22px; letter-spacing:.04em; font-weight:400; text-transform:none; }
+    .nav { margin-left:auto; display:flex; align-items:center; gap:2.2vw; }
+    .nav a { text-decoration:none; font-size:13px; font-weight:500; letter-spacing:.04em; position:relative; }
+    .nav-dropdown { position:relative; }
+    .nav-dropdown summary { list-style:none; cursor:pointer; font-size:13px; font-weight:500; letter-spacing:.04em; }
+    .nav-dropdown summary::-webkit-details-marker { display:none; }
+    .nav-dropdown summary::after { content:"⌄"; display:inline-block; margin-left:6px; font-size:12px; transition:transform .2s; }
+    .nav-dropdown[open] summary::after { transform:rotate(180deg); }
+    .dropdown-menu { position:absolute; top:calc(100% + 14px); left:-18px; width:190px; padding:12px 0; background:#fff; box-shadow:0 12px 30px rgba(23,63,77,.16); }
+    .dropdown-menu a { display:block; padding:9px 18px; white-space:nowrap; }
+    .dropdown-menu a:hover { color:var(--red); }
+    @media (min-width:901px) { .nav-dropdown:hover .dropdown-menu { display:block; } }
+    .nav a.active::after { content:""; position:absolute; left:0; right:0; height:1px; background:currentColor; bottom:-7px; }
+    .nav .support { color:#fff; background:var(--red); padding:12px 19px; transition:background .2s; }
+    .nav .support:hover { background:#7d1d21; }
+    .menu-btn { display:none; margin-left:auto; border:0; background:none; width:42px; height:42px; padding:8px; }
+    .menu-btn span { display:block; height:1px; background:var(--ink); margin:7px 0; }
+    .hero { min-height:500px; position:relative; display:grid; place-items:center; overflow:hidden; background:#173f4d; }
+    .hero::before { content:""; position:absolute; inset:0; background:linear-gradient(125deg,#173f4d 0 47%,#315f6c 47% 70%,#b3423d 70% 100%); }
+    .hero::after { content:""; position:absolute; width:36vw; height:36vw; min-width:330px; min-height:330px; right:-8vw; top:-12vw; border:1px solid rgba(255,255,255,.28); border-radius:50%; box-shadow:0 0 0 70px rgba(255,255,255,.04),0 0 0 140px rgba(255,255,255,.035); }
+    .hero h1 { position:relative; z-index:1; color:#fff; font:400 clamp(58px,8vw,112px)/1 "DM Serif Display",serif; letter-spacing:-.02em; margin:0; text-shadow:0 2px 18px rgba(0,0,0,.18); }
+    .events { padding:105px 6vw 120px; max-width:1440px; margin:auto; }
+    .eyebrow { color:var(--red); text-transform:uppercase; letter-spacing:.19em; font-size:11px; font-weight:600; margin:0 0 13px; }
+    .section-heading { display:flex; align-items:flex-end; justify-content:space-between; gap:30px; padding-bottom:30px; border-bottom:1px solid #cfc8bc; }
+    .section-heading h2 { font:400 clamp(42px,5vw,70px)/1.05 "DM Serif Display",serif; margin:0; }
+    .section-heading p { max-width:480px; margin:0; color:#5f6d68; }
+    .event { display:grid; grid-template-columns:110px 230px 1fr; gap:4vw; padding:58px 0; border-bottom:1px solid #cfc8bc; align-items:start; }
+    .date { color:var(--red); text-align:center; text-transform:uppercase; letter-spacing:.14em; font-size:12px; font-weight:600; }
+    .date strong { display:block; color:var(--ink); font:400 58px/1 "DM Serif Display",serif; letter-spacing:0; margin-top:5px; }
+    .event-image { width:230px; aspect-ratio:.72/1; overflow:hidden; position:relative; background:#315f6c; }
+    .event-image::before,.event-image::after { content:""; position:absolute; border-radius:50%; }
+    .event-image::before { width:58%; aspect-ratio:1; right:-12%; top:-34%; border:1px solid rgba(255,255,255,.38); box-shadow:0 0 0 34px rgba(255,255,255,.07),0 0 0 68px rgba(255,255,255,.045); }
+    .event-image::after { width:42%; height:9px; left:10%; bottom:18%; background:rgba(255,255,255,.68); border-radius:0; box-shadow:0 20px 0 rgba(255,255,255,.28); }
+    .event-image.terracotta { background:linear-gradient(135deg,#b3423d,#c96b55); }
+    .details h3 { font:400 clamp(28px,3vw,42px)/1.15 "DM Serif Display",serif; margin:-5px 0 14px; }
+    .meta { margin:0 0 17px; font-weight:500; }
+    .place { margin:0 0 18px; color:#5b6965; }
+    .description { margin:0 0 24px; max-width:610px; color:#5b6965; }
+    .event-link { display:inline-block; color:var(--red); text-decoration:none; text-transform:uppercase; letter-spacing:.12em; font-size:11px; font-weight:600; border-bottom:1px solid var(--red); padding-bottom:3px; }
+    .past { background:var(--cream); padding:90px 6vw; text-align:center; }
+    .past h2 { font:400 clamp(38px,5vw,64px)/1.1 "DM Serif Display",serif; margin:0 0 12px; }
+    .past p { color:#5b6965; margin:0 auto 28px; max-width:560px; }
+    .outline-btn { display:inline-block; padding:13px 22px; border:1px solid var(--ink); text-decoration:none; text-transform:uppercase; letter-spacing:.12em; font-size:11px; font-weight:600; }
+    .members { padding:105px 6vw; background:#fff; }
+    .members-inner { max-width:1180px; margin:auto; }
+    .members-intro { max-width:680px; margin-bottom:40px; }
+    .members h2 { font:400 clamp(42px,5vw,70px)/1.05 "DM Serif Display",serif; margin:0 0 16px; }
+    .member-gate { max-width:560px; padding:38px; background:var(--cream); }
+    .member-gate label { display:block; margin-bottom:10px; font-size:12px; font-weight:600; text-transform:uppercase; letter-spacing:.12em; }
+    .code-row { display:flex; }
+    .code-row input { flex:1; min-width:0; padding:14px; border:1px solid #bcb5aa; background:#fff; font:inherit; }
+    .code-row button { padding:0 22px; border:0; background:var(--red); color:#fff; font:600 11px Poppins,sans-serif; text-transform:uppercase; letter-spacing:.1em; cursor:pointer; }
+    .gate-message { min-height:24px; margin:10px 0 0; color:var(--red); font-size:13px; }
+    .member-content[hidden] { display:none; }
+    .member-content { display:grid; grid-template-columns:1fr 1fr; gap:35px; }
+    .member-card { padding:35px; border:1px solid #d6d0c6; }
+    .member-card h3 { font:400 31px/1.15 "DM Serif Display",serif; margin:0 0 20px; }
+    .resource-list,.schedule-list { list-style:none; padding:0; margin:0; }
+    .resource-list li,.schedule-list li { padding:15px 0; border-top:1px solid #ded9d1; }
+    .resource-list a { color:var(--red); font-weight:500; }
+    .schedule-list strong { display:block; }
+    .member-tools { grid-column:1/-1; display:flex; justify-content:flex-end; }
+    .member-tools button { border:0; background:none; text-decoration:underline; cursor:pointer; color:#5b6965; }
+    footer { background:var(--ink); color:#fff; padding:65px 6vw 36px; }
+    .footer-main { display:flex; align-items:flex-start; justify-content:space-between; gap:40px; margin-bottom:60px; }
+    footer .brand-mark { border-color:#fff; color:#fff; }
+    .signup { max-width:560px; width:100%; }
+    .signup h3 { font:400 30px/1.2 "DM Serif Display",serif; margin:0 0 14px; }
+    .signup-row { display:flex; margin-top:18px; }
+    .signup input { flex:1; min-width:0; padding:14px; font:inherit; border:0; }
+    .signup button { border:1px solid #fff; color:#fff; background:transparent; padding:0 22px; text-transform:uppercase; letter-spacing:.1em; font-size:11px; cursor:pointer; }
+    .footer-bottom { border-top:1px solid rgba(255,255,255,.25); padding-top:28px; display:flex; justify-content:space-between; gap:20px; font-size:11px; letter-spacing:.04em; color:rgba(255,255,255,.75); }
+    @media (max-width:900px) {
+      .site-header { height:88px; padding:0 24px; }
+      .brand-mark { width:54px; height:54px; font-size:26px; }
+      .brand-copy { display:none; }
+      .nav { display:none; position:absolute; top:88px; left:0; right:0; background:#fff; padding:25px; flex-direction:column; align-items:flex-start; box-shadow:0 12px 25px rgba(0,0,0,.08); }
+      .dropdown-menu { position:static; width:auto; padding:8px 0 0 12px; box-shadow:none; }
+      .nav.open { display:flex; }
+      .menu-btn { display:block; }
+      .hero { min-height:400px; }
+      .event { grid-template-columns:75px 1fr; gap:28px; }
+      .event-image { grid-column:2; }
+      .details { grid-column:2; }
+      .section-heading { align-items:flex-start; flex-direction:column; }
+      .member-content { grid-template-columns:1fr; }
+      .member-tools { grid-column:1; }
+    }
+    @media (max-width:600px) {
+      .hero { min-height:330px; }
+      .events { padding:70px 22px 85px; }
+      .event { grid-template-columns:55px 1fr; gap:18px; padding:42px 0; }
+      .date strong { font-size:42px; }
+      .event-image { width:min(230px,100%); aspect-ratio:.72/1; }
+      .footer-main,.footer-bottom { flex-direction:column; }
+      .signup-row { flex-direction:column; gap:8px; }
+      .signup button { padding:14px; }
+      .members { padding:70px 22px; }
+      .member-gate,.member-card { padding:26px 20px; }
+      .code-row { flex-direction:column; gap:8px; }
+      .code-row button { padding:14px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Val Voices home">
+      <span class="brand-mark">VV</span>
+      <span class="brand-copy"><strong>Val Voices</strong>Chorus</span>
+    </a>
+    <button class="menu-btn" aria-label="Open menu" aria-expanded="false"><span></span><span></span><span></span></button>
+    <nav class="nav" aria-label="Main navigation">
+      <details class="nav-dropdown"><summary>About</summary><div class="dropdown-menu"><a href="index.html#about">Our Mission</a><a href="index.html#what-we-offer">What We Offer</a><a href="index.html#history">Our History</a></div></details><a class="active" href="events.html">Events</a><a href="index.html#join">Join Us!</a><a href="index.html#contact">Contact Us</a><a href="#members">For Members</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero"><h1>Concerts</h1></section>
+    <section class="events" id="concerts">
+      <div class="section-heading">
+        <div><p class="eyebrow">Upcoming & recent</p><h2>Come hear us sing</h2></div>
+        <p>Join Val Voices for an uplifting program of choral music, shared in community with friends, family, and music lovers.</p>
+      </div>
+
+      <article class="event">
+        <div class="date">Oct<strong>13</strong></div>
+        <div class="event-image" role="img" aria-label="Decorative Adriatic blue concert graphic"></div>
+        <div class="details"><h3>SMBS Dinner Meeting</h3><p class="meta">October 13 · Year to be announced</p><p class="place">Croatian Cultural Center · San Francisco, California</p><p class="description"><strong>5:30 PM</strong> Open bar<br><strong>6:00 PM</strong> Val Voices performance<br><strong>6:15–7:15 PM</strong> Dinner</p><span class="event-link">Private event</span></div>
+      </article>
+
+      <article class="event">
+        <div class="date">Nov<strong>22</strong></div>
+        <div class="event-image terracotta" role="img" aria-label="Decorative terracotta concert graphic"></div>
+        <div class="details"><h3>Val Voices Public Performance</h3><p class="meta">November 22 · 4:00 PM</p><p class="place">Croatian Cultural Center · San Francisco, California</p><p class="description">A special Val Voices performance open to the general public. Additional program and attendance details will be announced soon.</p><span class="event-link">Public event</span></div>
+      </article>
+    </section>
+
+    <section class="members" id="members">
+      <div class="members-inner">
+        <div class="members-intro"><p class="eyebrow">Val Voices members</p><h2>Member resources</h2><p>Enter the member access code to view rehearsal information and sheet music.</p></div>
+        <form class="member-gate" id="member-gate">
+          <label for="member-code">Member access code</label>
+          <div class="code-row"><input id="member-code" type="password" autocomplete="current-password" placeholder="Enter code" required><button type="submit">Enter</button></div>
+          <p class="gate-message" id="gate-message" aria-live="polite"></p>
+        </form>
+        <div class="member-content" id="member-content" hidden>
+          <div class="member-card"><h3>Sheet music</h3><ul class="resource-list"><li><a href="#">Concert folder</a> <span>— PDF collection</span></li><li><a href="#">Practice recordings</a></li><li><a href="#">Performance notes</a></li></ul></div>
+          <div class="member-card"><h3>Fall rehearsal schedule</h3><ul class="schedule-list"><li><strong>Weekly on Sundays</strong>10:30 AM–12:00 PM</li><li><strong>Rehearsal location</strong>60 Onondaga Avenue, San Francisco · 10-minute walk from Balboa Park BART</li></ul></div>
+          <div class="member-tools"><button type="button" id="member-logout">Lock member area</button></div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="footer">
+    <div class="footer-main">
+      <div class="brand"><span class="brand-mark">VV</span><span class="brand-copy"><strong>Val Voices</strong>Chorus</span></div>
+      <form class="signup"><h3>Join our mailing list</h3><p>Receive concert announcements and news from the chorus.</p><div class="signup-row"><input type="email" aria-label="Email address" placeholder="Email address" required><button type="submit">Sign up</button></div></form>
+    </div>
+    <div class="footer-bottom"><span>Val Voices · San Francisco, California</span><span><a href="mailto:smbscultural@gmail.com">smbscultural@gmail.com</a></span></div>
+  </footer>
+  <script>
+    const button = document.querySelector('.menu-btn');
+    const nav = document.querySelector('.nav');
+    button.addEventListener('click', () => { const open = nav.classList.toggle('open'); button.setAttribute('aria-expanded', open); });
+    document.querySelector('.signup').addEventListener('submit', e => { e.preventDefault(); const b=e.currentTarget.querySelector('button'); b.textContent='Thank you!'; e.currentTarget.querySelector('input').value=''; });
+    const memberGate = document.querySelector('#member-gate');
+    const memberContent = document.querySelector('#member-content');
+    const gateMessage = document.querySelector('#gate-message');
+    memberGate.addEventListener('submit', e => {
+      e.preventDefault();
+      if (document.querySelector('#member-code').value.trim().toUpperCase() === 'VALVOICES2026') {
+        sessionStorage.setItem('valVoicesMember', 'yes');
+        window.location.href = 'members.html';
+      } else {
+        gateMessage.textContent = 'That code is not recognized. Please try again.';
+      }
+    });
+    document.querySelector('#member-logout').addEventListener('click', () => {
+      memberContent.hidden = true;
+      memberGate.hidden = false;
+      document.querySelector('#member-code').value = '';
+    });
+  </script>
+</body>
+</html>
