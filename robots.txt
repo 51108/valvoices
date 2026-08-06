@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /valvoices/members.html
+
+Sitemap: https://51108.github.io/valvoices/sitemap.xml
